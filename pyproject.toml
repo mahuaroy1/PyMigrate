@@ -1,0 +1,20 @@
+# setuptools builds the distributable package; it is not a runtime dependency.
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pymigrate"
+version = "0.1.0"
+description = "AST-guided Python API migrations with planning and verification"
+requires-python = ">=3.10"
+# Runtime implementation uses only the Python standard library.
+dependencies = []
+
+# Installing the package exposes the same CLI as "python -m pymigrate".
+[project.scripts]
+pymigrate = "pymigrate.cli:main"
+
+# Package only the implementation, not the tests or migration example fixtures.
+[tool.setuptools.packages.find]
+include = ["pymigrate*"]
